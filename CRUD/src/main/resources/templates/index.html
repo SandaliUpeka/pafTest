@@ -1,0 +1,25 @@
+<div th:switch="${products}">
+    <h2 th:case="null">No products yet!</h2>
+        <div th:case="*">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td><a th:href="@{/edit/{id}(id=${product.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    <p><a href="/signup">Add a new product</a></p>
+</div>
